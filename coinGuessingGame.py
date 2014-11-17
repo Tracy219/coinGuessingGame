@@ -10,9 +10,15 @@ def coin_flip():
 
 # --------------------- Main Program Below ------------------------
 f = open("highestScore.txt", "r+")
+d = open("highestScoreOwnerName.txt", "r+")
+
+highestScoreOwnerName = d.read()
 highestScore = f.read()
 
-print("This is a coin guessing game. All time highest score: {}.".format(highestScore))
+print("This is a coin guessing game. All time highest score: {}.(by {})" \
+.format(highestScore, highestScoreOwnerName))
+
+name = raw_input("What\'s your name? ")
 score = 0
 
 while True:
@@ -34,6 +40,8 @@ while True:
 if score >= int(highestScore):
 	f.seek(0)
 	f.write(str(score))
+	d.seek(0)
+	d.write(name)
 	print("Congratulations, you break the records!!! New highest score: {}".format(score))
 			
 		
